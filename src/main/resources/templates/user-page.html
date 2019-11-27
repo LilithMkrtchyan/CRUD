@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Page</title>
+    <link type="text/css" href="css/user.css" rel="stylesheet">
+    <link rel="icon" type="image/jpg" href="/images/favicon.jpg">
+</head>
+<body>
+<div id="user">
+    <div class="full-name">
+        <a th:if="${isLoggedIn}" href="/logout">Log out</a>
+    </div>
+<div class="full-name">
+<p th:text="${currentUser.getName()}+' '+${currentUser.getSurname()}"></p>
+</div>
+    <div class="table">
+<table>
+    <div class="th">
+    <tr>
+        <div class="td">
+        <th>Login date</th>
+        <th>Ip address</th>
+        </div>
+    </tr>
+    <tr th:each="userHistory : ${userHistories}">
+        <td th:text="${userHistory.loginDate}"></td>
+        <td th:text="${userHistory.ipAddress}"></td>
+    </tr>
+    </div>
+</table>
+    </div>
+</div>
+</body>
+</html>

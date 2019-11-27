@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link type="text/css" href="css/admin.css" rel="stylesheet">
+    <link rel="icon" type="image/jpg" href="images/favicon.jpg">
+
+</head>
+<body>
+<a th:if="${isLoggedIn}" href="/logout">Log out</a>
+<div class="main">
+    <header>
+        <h3 th:text="${currentUser.getName()}+' '+${currentUser.getSurname()}"></h3>
+    </header>
+    <div class="table-wrapper">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Registration Date</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="user : ${allUsers}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.surname}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.createdAt}"></td>
+                <td><a  th:if="${user.isDeleted()}" th:href="@{'delete/userId/'+${user.id}}">X</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
