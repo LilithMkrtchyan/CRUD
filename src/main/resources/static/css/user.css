@@ -1,15 +1,115 @@
+/* body style */
 body {
-    background-image: url("../images/user.jpg");
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: lightblue;
 }
 
-.full-name{
-    font-size: 25px;
-    color: #c5e9fc;
+.parent {
+    display: flex;
 }
+
+#full-name{
+    background: lightblue;
+    flex: 0.6;
+    display: block;
+    font-size: 22px;
+    color: darkblue;
+    font-weight:bold;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.close-logout{
+    background: #A3C9E7;
+    flex: 0.2;
+    height: 20px;
+    font-size: 15px;
+    padding-top:5px;
+    text-align: center;
+    border: 1.5px solid #96b9d7;
+    border-radius: 4px;
+}
+
+#hint_table{
+    margin-top: 30px;
+    margin-left: 20px;
+    width: 390px;
+    text-align: center;
+    font-style: italic;
+    color: darkblue;
+}
+
+#parent2{
+    display: flex;
+    position: fixed;
+    margin-left: 20px;
+}
+
+.table_fields{
+    background: #A3C9E7;
+    width: 192px;
+    height: 20px;
+    font-size: 17px;
+    padding-bottom:20px;
+    text-align: center;
+    border: 1.5px solid #96b9d7;
+    border-radius: 4px;
+    font-weight:bold;
+}
+
+#parent-data{
+    margin-top: 30px;
+}
+
+.table_data{
+    height: 10px;
+    width: 193px;
+    font-size: 15px;
+    text-align: center;
+    border: 1px solid #96b9d7;
+
+}
+
+#scroll {
+    padding-top: 45px;
+    margin-left: 20px;
+    height: 500px;
+    width: 410px;
+    overflow: auto;
+    background-color: #f5f5f5;
+    color: black;
+    scrollbar-base-color: #96b9d7;
+    font-family: sans-serif;
+    border: 1.5px solid #96b9d7;
+    border-radius: 4px;
+}
+
+
+
+
+.table_tr:nth-child(even) {
+    background: #e2e2e2 !important;
+}
+
+.table_tr:nth-child(odd) {
+    background: yellow !important;
+}
+
+
+
+/*.log_out{
+    a:link { color: #fbff61; }
+    a​:active { color: #38f5ff; }
+    a​:visited { color: purple; }
+    a​:hover { color: green; }
+}*/
+/*.log_out{
+    link : #29c009;
+    vlink: #791080;
+    alink: #34f3ff;
+}*/
+
+
+
 
 .table {
     font-family: arial, sans-serif;
@@ -17,8 +117,3 @@ body {
     width: 100%;
 }
 
-.td, .th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}

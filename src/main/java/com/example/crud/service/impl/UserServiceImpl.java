@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserHistory> getUserHistories(User user) {
-        return userHistoryRepository.findAll();
+        return userHistoryRepository.findAllByUser(user);
     }
 
     @Override

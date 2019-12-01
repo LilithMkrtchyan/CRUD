@@ -24,6 +24,7 @@ public class CrudApplication implements CommandLineRunner {
         SpringApplication.run(CrudApplication.class, args);
     }
 
+    //add ADMIN after DB migration
     @Override
     public void run(String... args) throws Exception {
         if(userRepository.getByEmail("admin@gmail.com") == null){

@@ -25,6 +25,13 @@ public class MainController {
         this.userService = userService;
     }
 
+    /**
+     * Open app
+     *
+     * @param currentUser, 'logined user if exist'
+     * @return admin-page.html , user-page.html if(current user is exist and role = admin or user) or index.html
+     */
+
     @GetMapping("/index")
     public String index(ModelMap map, HttpServletRequest httpServletRequest,
                         @AuthenticationPrincipal CurrentUser currentUser,

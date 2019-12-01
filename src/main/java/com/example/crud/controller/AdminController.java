@@ -37,11 +37,23 @@ public class AdminController {
     @GetMapping("delete/userId/{userId}")
     public String deleteUser(@AuthenticationPrincipal CurrentUser currentUser,
                              @PathVariable("userId")String userId){
-        if(currentUser!=null && currentUser.getUser().getRole()==UserRole.ADMIN){
+        if(currentUser != null && currentUser.getUser().getRole() == UserRole.ADMIN){
             userService.deleteUser(userId);
             return "redirect:/admin/home";
         }else {
             return "redirect:/index";
         }
     }
+
+   /* @GetMapping("delete/userId/{userId}")
+    public String deleteUser(@AuthenticationPrincipal CurrentUser currentUser,
+                             @PathVariable("userId")String userId){
+        if(currentUser != null && currentUser.getUser().getRole() == UserRole.ADMIN){
+            userService.deleteUser(userId);
+            return "redirect:/admin/home";
+        }else {
+            return "redirect:/index";
+        }
+    }*/
+
 }

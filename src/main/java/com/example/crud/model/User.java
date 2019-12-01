@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -45,8 +46,6 @@ public class User {
     @Column
     private boolean verifed;
 
-//    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    private Set<UserHistory> userHistories;
 
     @PrePersist
     public void prePersist(){

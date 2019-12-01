@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Page</title>
-    <link type="text/css" href="css/admin.css" rel="stylesheet">
-    <link rel="icon" type="image/jpg" href="images/favicon.jpg">
+    <link type="text/css" href="/css/admin.css" rel="stylesheet">
+    <link rel="icon" type="image/jpg" href="/images/favicon.jpg">
 
 </head>
 <body>
+
 <a th:if="${isLoggedIn}" href="/logout">Log out</a>
 <div class="main">
     <header>
-        <h3 th:text="${currentUser.getName()}+' '+${currentUser.getSurname()}"></h3>
+        <h3 th:text="'Hi '+${currentUser.getName()}+' '+${currentUser.getSurname()}"></h3>
+        <h3 id="hint_table">View all registered users and remove closed profiles from DB</h3>
     </header>
     <div class="table-wrapper">
         <table>
@@ -34,3 +36,64 @@
 </div>
 </body>
 </html>
+
+<!--
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link type="text/css" href="/css/admin.css" rel="stylesheet">
+    <link rel="icon" type="image/jpg" href="/images/favicon.jpg">
+
+</head>
+<body>
+
+<a th:if="${isLoggedIn}" href="/logout">Log out</a>
+<div class="main">
+    <header>
+        <h2 th:text="'Hi '+${currentUser.getName()}+' '+${currentUser.getSurname()}"></h2>
+        <h3 id="hint_table">View all registered users and remove closed profiles from DB</h3>
+    </header>
+
+
+    <div class="table-wrapper">
+        <table>
+            <tr id="table1">
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Registration Date</th>
+                <th>Delete</th>
+            </tr>
+        </table>
+        <table id="scroll">
+            <tr th:each="user : ${allUsers}">
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.surname}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.createdAt}"></td>
+                <td><a  th:if="${user.isDeleted()}" th:href="@{'delete/userId/'+${user.id}}">X</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
+-->
+
+
+<!--
+<div id="scroll" class="table">
+
+    <table>
+        <div id="parent-data">
+            <tr th:each="userHistory, iStat: ${userHistories}"
+                th:style="${iStat.odd}? 'background: #e2e2e2;'">
+                <td class="table_data" th:text="${userHistory.loginDate}"></td>
+                <td class="table_data" th:text="${userHistory.ipAddress}"></td>
+            </tr>
+        </div>
+    </table>
+</div>
+</div>-->

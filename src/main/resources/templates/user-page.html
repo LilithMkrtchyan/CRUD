@@ -3,32 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>User Page</title>
-    <link type="text/css" href="css/user.css" rel="stylesheet">
+    <link type="text/css" href="/css/user.css" rel="stylesheet">
     <link rel="icon" type="image/jpg" href="/images/favicon.jpg">
 </head>
 <body>
-<div id="user">
-    <div class="full-name">
-        <a th:if="${isLoggedIn}" href="/logout">Log out</a>
-    </div>
-<div class="full-name">
-<p th:text="${currentUser.getName()}+' '+${currentUser.getSurname()}"></p>
-</div>
-    <div class="table">
-<table>
-    <div class="th">
-    <tr>
-        <div class="td">
-        <th>Login date</th>
-        <th>Ip address</th>
+    <div id="user">
+        <div class="parent">
+            <div id="full-name">
+                <p th:text="'Hi '+${currentUser.getName()}+' '+${currentUser.getSurname()}"></p>
+            </div>
+            <div class="close-logout">
+                <a th:if="${isLoggedIn}" href="/closeprofile">Close profile</a>
+            </div>
+            <div class="close-logout">
+                <a th:if="${isLoggedIn}" href="/logout">Log out</a>
+            </div>
         </div>
-    </tr>
-    <tr th:each="userHistory : ${userHistories}">
-        <td th:text="${userHistory.loginDate}"></td>
-        <td th:text="${userHistory.ipAddress}"></td>
-    </tr>
-    </div>
-</table>
+        <h3 id="hint_table">Your login history</h3>
+        <div id="parent2">
+            <div class="table_fields">
+                <p>Login date </p>
+            </div>
+            <div class="table_fields">
+                <p>IP address</p>
+            </div>
+        </div>
+
+    <div id="scroll" class="table">
+        <table>
+            <tr id="parent-data" th:each="userHistory, iStat: ${userHistories}"
+                th:style="${iStat.odd}? 'background: #e2e2e2;'">
+                <td class="table_data" th:text="${userHistory.loginDate}"></td>
+                <td class="table_data" th:text="${userHistory.ipAddress}"></td>
+            </tr>
+        </table>
     </div>
 </div>
 </body>
