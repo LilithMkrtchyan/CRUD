@@ -8,13 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
@@ -23,9 +19,17 @@ public class UserController {
 
     private UserService userService;
 
+
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+
+    @GetMapping("/verify")
+    public String verify(@RequestParam(name = "v")String verificationToken, HttpServletRequest httpServletRequest){
+        return userService.verifyAccount(verificationToken, httpServletRequest);
+
     }
 
 
@@ -58,5 +62,10 @@ public class UserController {
             return "user-page";
         }
         return "redirect:/index";
+    }
+
+    @PostMapping("/delete")
+    public String deleteAccount(@AuthenticationPrincipal CurrentUser currentUser){
+        return userService.deleteAccount(currentUser.getUser());
     }
 }

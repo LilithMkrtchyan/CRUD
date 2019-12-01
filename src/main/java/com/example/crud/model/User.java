@@ -46,6 +46,9 @@ public class User {
     @Column
     private boolean verifed;
 
+    @Column
+    private String verificationToken;
+
 
     @PrePersist
     public void prePersist(){

@@ -33,6 +33,7 @@ public class CrudApplication implements CommandLineRunner {
                     .surname("Admin")
                     .email("admin@gmail.com")
                     .password(passwordEncoder.encode("123456"))
+                    .verifed(true)
                     .role(UserRole.ADMIN)
                     .build());
         }

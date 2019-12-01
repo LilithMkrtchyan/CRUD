@@ -35,10 +35,14 @@ public class MainController {
     @GetMapping("/index")
     public String index(ModelMap map, HttpServletRequest httpServletRequest,
                         @AuthenticationPrincipal CurrentUser currentUser,
-                        @RequestParam(name = "errorAlias", required = false, defaultValue = "") String errorAlias) {
+                        @RequestParam(name = "errorAlias", required = false, defaultValue = "") String errorAlias,
+                        @RequestParam(name = "anverifiedAccount", required = false, defaultValue = "false") String anverifiedAccount,
+                        @RequestParam(name = "mailSend", required = false, defaultValue = "false") String mailSend) {
         if (currentUser == null) {
+            System.out.println("anverifiedAccount "+anverifiedAccount);
             System.out.println("errorAlias " + errorAlias);
             map.addAttribute("user_obj", new User());
+            map.addAttribute("mailSend", mailSend);
             map.addAttribute("errorAlias", errorAlias);
             return "index";
         } else {

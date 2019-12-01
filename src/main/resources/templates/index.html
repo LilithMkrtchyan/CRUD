@@ -25,7 +25,8 @@
                     </div>
                     <div>
                         <label for="user_surname">Surname</label>
-                        <input id="user_surname" th:field="*{surname}" class="registration-login" type="text" name="surname">
+                        <input id="user_surname" th:field="*{surname}" class="registration-login" type="text"
+                               name="surname">
                     </div>
                     <div>
                         <label for="user_email">Email</label>
@@ -33,11 +34,14 @@
                     </div>
                     <div>
                         <label for="user_password">Password</label>
-                        <input id="user_password" th:field="*{password}" class="registration-login" type="password" name="password">
+                        <input id="user_password" th:field="*{password}" class="registration-login" type="password"
+                               name="password">
                     </div>
-                    <p th:if="${errorAlias!='' && errorAlias.equals('registerError')}" style="color: red">User with this email already exist!</p>
+                    <p th:if="${errorAlias!='' && errorAlias.equals('registerError')}" style="color: red">User with this
+                        email already exist!</p>
 
                     <input type="submit" class="btn" value="Registration">
+                    <p th:if="${mailSend}"><b>Please verify your email</b></p>
                 </form>
             </div>
         </div>
@@ -46,21 +50,25 @@
             <div>
                 <form action="#" method="post" th:object="${user_obj}">
                     <label for="email">Email</label>
-                    <input id="email" th:field="*{email}" class="registration-login" type="email" placeholder="Type your email">
+                    <input id="email" th:field="*{email}" class="registration-login" type="email"
+                           placeholder="Type your email">
                     <label for="password">Password</label>
-                    <input id="password" th:field="*{password}" class="registration-login" type="password" placeholder="Type your password">
+                    <input id="password" th:field="*{password}" class="registration-login" type="password"
+                           placeholder="Type your password">
                     <div class="form-group">
                         <label for="remember">Remember</label>
                         <input id="remember" class="checkmark" type="checkbox" name="remember-me" value="true"/>
                     </div>
-                    <p th:if="${errorAlias!='' && errorAlias.equals('loginError')}" style="color: red">Invalid credentials!</p>
-                    <button  class="btn" type="submit">Login</button>
+                    <p th:if="${errorAlias!='' && errorAlias.equals('loginError')}" style="color: red">Invalid
+                        credentials!</p>
+                    <button class="btn" type="submit">Login</button>
                 </form>
             </div>
         </div>
     </div>
     <div class="text">
-        <h2>* The book is the best friend.<br>* Without the book, as without hands.<br>* From time immemorial the book has been raising humanity.</h2>
+        <h2>* The book is the best friend.<br>* Without the book, as without hands.<br>* From time immemorial the book
+            has been raising humanity.</h2>
     </div>
 </div>
 </body>

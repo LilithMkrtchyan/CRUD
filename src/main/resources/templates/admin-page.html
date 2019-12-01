@@ -29,7 +29,7 @@
                 <td th:text="${user.surname}"></td>
                 <td th:text="${user.email}"></td>
                 <td th:text="${user.createdAt}"></td>
-                <td><a  th:if="${user.isDeleted()}" th:href="@{'delete/userId/'+${user.id}}">X</a></td>
+                <td><a th:if="${user.isDeleted()}" th:href="@{'delete/userId/'+${user.id}}">X</a></td>
             </tr>
         </table>
     </div>

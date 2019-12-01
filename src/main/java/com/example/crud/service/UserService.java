@@ -17,4 +17,8 @@ public interface UserService {
     List<User> getAllUsers();
 
     void deleteUser(String userId);
+
+    String verifyAccount(String verificationToken, HttpServletRequest httpServletRequest);
+
+    String deleteAccount(User user);
 }
