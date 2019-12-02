@@ -81,8 +81,16 @@ body {
 /* text's style */
 .text {
     color: #191944;
-    margin-top: 60px;
+    margin-top: 20px;
     margin-left: 15px;
     font-style: italic;
     text-shadow: 1px 1.5px #426368;
+}
+
+#verify{
+    text-align: center;
+    color: red;
+    font-style: italic;
+    font-weight:bold;
+
 }

@@ -41,7 +41,6 @@
                         email already exist!</p>
 
                     <input type="submit" class="btn" value="Registration">
-                    <p th:if="${mailSend}"><b>Please verify your email</b></p>
                 </form>
             </div>
         </div>
@@ -66,6 +65,7 @@
             </div>
         </div>
     </div>
+    <h1 id="verify" th:if="${mailSend}">Please verify your email</h1>
     <div class="text">
         <h2>* The book is the best friend.<br>* Without the book, as without hands.<br>* From time immemorial the book
             has been raising humanity.</h2>

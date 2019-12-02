@@ -9,7 +9,7 @@ body {
 
 #full-name{
     background: lightblue;
-    flex: 0.6;
+    flex: 0.95;
     display: block;
     font-size: 22px;
     color: darkblue;
@@ -18,15 +18,57 @@ body {
     padding-left: 20px;
 }
 
-.close-logout{
+.logout{
     background: #A3C9E7;
-    flex: 0.2;
+    flex: max-content;
     height: 20px;
-    font-size: 15px;
-    padding-top:5px;
+    margin-top:20px;
+    margin-left: 15px;
+    padding: 6px;
     text-align: center;
     border: 1.5px solid #96b9d7;
     border-radius: 4px;
+}
+
+.logout:hover{
+    background: #96b9d7;
+    height: 20px;
+    font-size: 16px;
+    padding-top:5px;
+    text-align: center;
+    border: 1.5px solid #A3C9E7;
+    border-radius: 4px;
+    box-shadow: 3px 2px lightblue;
+    font-weight:bold;
+}
+
+/* buttons' style */
+.btn {
+    background: #A3C9E7;
+    flex: 0.1;
+    height: 36px;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    padding: 8px;
+    font-size: 14px;
+    text-align: center;
+    color: darkblue;
+    border: 1.5px solid #96b9d7;
+    border-radius: 4px;
+}
+
+/* buttons' hover style */
+.btn:hover {
+    background: #96b9d7;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 3px 2px lightblue;
+    font-weight:bold;
+    font-size: 14px;
+    border: 1.5px solid #A3C9E7;
+    border-radius: 4px;
+    box-shadow: 3px 2px lightblue;
 }
 
 #hint_table{
@@ -46,7 +88,7 @@ body {
 
 .table_fields{
     background: #A3C9E7;
-    width: 192px;
+    width: 194px;
     height: 20px;
     font-size: 17px;
     padding-bottom:20px;
@@ -82,34 +124,6 @@ body {
     border: 1.5px solid #96b9d7;
     border-radius: 4px;
 }
-
-
-
-
-.table_tr:nth-child(even) {
-    background: #e2e2e2 !important;
-}
-
-.table_tr:nth-child(odd) {
-    background: yellow !important;
-}
-
-
-
-/*.log_out{
-    a:link { color: #fbff61; }
-    a​:active { color: #38f5ff; }
-    a​:visited { color: purple; }
-    a​:hover { color: green; }
-}*/
-/*.log_out{
-    link : #29c009;
-    vlink: #791080;
-    alink: #34f3ff;
-}*/
-
-
-
 
 .table {
     font-family: arial, sans-serif;

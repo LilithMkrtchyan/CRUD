@@ -25,6 +25,7 @@ public class MainController {
         this.userService = userService;
     }
 
+
     /**
      * Open app
      *
@@ -39,7 +40,7 @@ public class MainController {
                         @RequestParam(name = "anverifiedAccount", required = false, defaultValue = "false") String anverifiedAccount,
                         @RequestParam(name = "mailSend", required = false, defaultValue = "false") String mailSend) {
         if (currentUser == null) {
-            System.out.println("anverifiedAccount "+anverifiedAccount);
+            System.out.println("anverifiedAccount "+ anverifiedAccount);
             System.out.println("errorAlias " + errorAlias);
             map.addAttribute("user_obj", new User());
             map.addAttribute("mailSend", mailSend);
@@ -54,6 +55,9 @@ public class MainController {
         }
     }
 
+
+
+
     @GetMapping("/loginSuccess")
     public ModelAndView loginSuccess(
             @AuthenticationPrincipal UserDetails userDetails,
@@ -64,7 +68,11 @@ public class MainController {
             userService.addUserHistory(currentUser.getUser(), httpServletRequest);
             System.out.println("loginSuccess currentUser!=null");
             User user = currentUser.getUser();
-            if (user.getRole() == UserRole.USER) {
+            if (user.getRole() == UserRole.USER ) {
+                if(user.isDeleted()){
+                    user.setDeleted(false);
+                    userService.activateAccount(user);
+                };
                 return new ModelAndView("redirect:/user/home");
             } else {
                 return new ModelAndView("redirect:/admin/home");

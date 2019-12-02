@@ -17,6 +17,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -61,7 +62,7 @@ public class UserServiceImpl implements UserService {
 //            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 //            SecurityContextHolder.getContext().setAuthentication(authentication);
             String verfyUrl = "http://" + serverHost + ":" + serverPost + "/user/verify?v=" + verficationToken;
-            String mailText = String.format("Daer %s %s please verify your account: Click to %s", user.getName(), user.getSurname(), verfyUrl);
+            String mailText = String.format("Dear %s %s please verify your account: Click to %s", user.getName(), user.getSurname(), verfyUrl);
             emailService.sendSimpleMessage(user.getEmail(), "Email verifiacation", mailText);
             result = "redirect:/index?mailSend=true";
         } else {
@@ -101,6 +102,7 @@ public class UserServiceImpl implements UserService {
             user.setVerificationToken(null);
             user.setVerifed(true);
             userRepository.save(user);
+            addUserHistory(user, request);
             UserDetails userDetails = userDetailsService.loadUserByUsername(user.getEmail().toLowerCase());
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
@@ -112,9 +114,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String deleteAccount(User user) {
-        userRepository.delete(user);
         SecurityContextHolder.getContext().setAuthentication(null);
+        user.setDeleted(true);
+        userRepository.save(user);
         return "redirect:/index";
+    }
+
+    @Override
+    public String activateAccount(User user) {
+        if (user.isDeleted()){
+            user.setDeleted(false);
+        }
+        userRepository.save(user);
+        return "redirect:/user/home";
     }
 
     private String getClientIp(HttpServletRequest request) {

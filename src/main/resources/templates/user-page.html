@@ -12,14 +12,12 @@
         <div id="full-name">
             <p th:text="'Hi '+${currentUser.getName()}+' '+${currentUser.getSurname()}"></p>
         </div>
-        <div class="close-logout">
             <form th:if="${isLoggedIn}" action="/user/delete" method="post">
-                <button type="submit">Close profile</button>
+                <button class="btn" type="submit">X Close profile</button>
             </form>
             <!--<a th:if="${isLoggedIn}" href="/user/delete">Close profile</a>-->
-        </div>
-        <div class="close-logout">
-            <a th:if="${isLoggedIn}" href="/logout">Log out</a>
+        <div class="logout">
+            <a th:if="${isLoggedIn}" href="/logout"><< Log out</a>
         </div>
     </div>
     <h3 id="hint_table">Your login history</h3>

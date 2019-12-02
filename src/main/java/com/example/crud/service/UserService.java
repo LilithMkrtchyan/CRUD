@@ -21,4 +21,6 @@ public interface UserService {
     String verifyAccount(String verificationToken, HttpServletRequest httpServletRequest);
 
     String deleteAccount(User user);
+
+    public String activateAccount(User user);
 }

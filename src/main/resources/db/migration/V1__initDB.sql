@@ -8,8 +8,7 @@ CREATE TABLE `users` (
   `role` varchar(50) NOT NULL DEFAULT 'USER',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
-
-  `verifed` tinyint(1) DEFAULT '0',
+  `verifed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
