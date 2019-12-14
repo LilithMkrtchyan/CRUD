@@ -22,18 +22,31 @@ public class AdminController {
         this.userService = userService;
     }
 
+    /**
+     * Open admin's page api
+     * Open app first page
+     *
+     * @return admin-page.html if current admin logged in your account
+     */
     @GetMapping("/home")
     public String getAdminPage(@AuthenticationPrincipal CurrentUser currentUser, ModelMap modelMap){
         if(currentUser != null && currentUser.getUser().getRole() == UserRole.ADMIN){
             modelMap.addAttribute("currentUser", currentUser.getUser());
             modelMap.addAttribute("allUsers",userService.getAllUsers());
             modelMap.addAttribute("isLoggedIn", currentUser != null);
+            modelMap.addAttribute("loggedCount",userService.getUserHistoryCountOrderByUser(userService.getAllUsers()));
             return "admin-page";
         }else {
             return "redirect:/index";
         }
     }
 
+    /**
+     * Admin delete closed users' account api
+     * Open app first page
+     *
+     * @return admin-pade.html for update deleted data
+     */
     @GetMapping("delete/userId/{userId}")
     public String deleteUser(@AuthenticationPrincipal CurrentUser currentUser,
                              @PathVariable("userId")String userId){
@@ -44,5 +57,7 @@ public class AdminController {
             return "redirect:/index";
         }
     }
+
+
 
 }

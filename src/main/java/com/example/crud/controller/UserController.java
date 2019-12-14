@@ -37,7 +37,7 @@ public class UserController {
      * User register api
      *
      * @param user -user model
-     * @return user-page.html or some page if usera already exist
+     * @return user-page.html or some page if user already exist
      */
     @PostMapping("/register")
     public String addUser(@ModelAttribute User user, HttpServletRequest httpServletRequest) {
@@ -46,9 +46,10 @@ public class UserController {
 
 
     /**
+     * Open user's page api
      * Open app first page
      *
-     * @return
+     * @return user-page.html if current user logged in your account
      */
     @GetMapping("/home")
     public String openUserPage(ModelMap modelMap,
@@ -64,6 +65,10 @@ public class UserController {
         return "redirect:/index";
     }
 
+    /**
+     * Current user closes account api
+     *
+     */
     @PostMapping("/delete")
     public String deleteAccount(@AuthenticationPrincipal CurrentUser currentUser){
         return userService.deleteAccount(currentUser.getUser());

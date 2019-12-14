@@ -29,7 +29,8 @@ public class MainController {
     /**
      * Open app
      *
-     * @param currentUser, 'logined user if exist'
+     * @param currentUser, 'logged user if exist'
+     * send message to email, for verification
      * @return admin-page.html , user-page.html if(current user is exist and role = admin or user) or index.html
      */
 
@@ -56,7 +57,12 @@ public class MainController {
     }
 
 
-
+    /**
+     * Open user home or admin home, if logged into account
+     *
+     * If current user role is USER and account is closed, then activate it
+     * @return admin-page.html , user-page.html if(current user is exist and role = ADMIN or User) or index.html
+     */
 
     @GetMapping("/loginSuccess")
     public ModelAndView loginSuccess(

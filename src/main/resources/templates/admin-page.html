@@ -16,7 +16,7 @@
         <h3 id="hint_table">View all registered users and remove closed profiles from DB</h3>
     </header>
     <div class="table-wrapper">
-        <table>
+        <table class="tables_together">
             <tr>
                 <th>Name</th>
                 <th>Surname</th>
@@ -30,6 +30,14 @@
                 <td th:text="${user.email}"></td>
                 <td th:text="${user.createdAt}"></td>
                 <td><a th:if="${user.isDeleted()}" th:href="@{'delete/userId/'+${user.id}}">X</a></td>
+            </tr>
+        </table>
+        <table class="tables_together">
+            <tr>
+                <th>Count logged</th>
+            </tr>
+            <tr th:each="i : ${loggedCount}">
+                <td th:text="${i}"></td>
             </tr>
         </table>
     </div>

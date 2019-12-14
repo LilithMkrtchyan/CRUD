@@ -15,4 +15,7 @@ public interface UserHistoryRepository extends JpaRepository<UserHistory,Integer
     @Query(value = "select u FROM UserHistory u where u.user=:user")
     List<UserHistory> findAllByUser(@Param("user") User user);
 
+    @Query(value = "SELECT COUNT(user) FROM UserHistory GROUP BY user")
+    List<Integer> getUserHistoryCountOrderByUser(@Param("users") List<User> users);
+
 }

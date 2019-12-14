@@ -17,7 +17,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -57,10 +56,6 @@ public class UserServiceImpl implements UserService {
             String verficationToken = UUID.randomUUID().toString();
             user.setVerificationToken(verficationToken);
             userRepository.save(user);
-//            UserDetails userDetails = userDetailsService.loadUserByUsername(user.getEmail().toLowerCase());
-//            UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-//            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-//            SecurityContextHolder.getContext().setAuthentication(authentication);
             String verfyUrl = "http://" + serverHost + ":" + serverPost + "/user/verify?v=" + verficationToken;
             String mailText = String.format("Dear %s %s please verify your account: Click to %s", user.getName(), user.getSurname(), verfyUrl);
             emailService.sendSimpleMessage(user.getEmail(), "Email verifiacation", mailText);
@@ -82,6 +77,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserHistory> getUserHistories(User user) {
         return userHistoryRepository.findAllByUser(user);
+    }
+
+    @Override
+    public List<Integer> getUserHistoryCountOrderByUser(List<User> users) {
+        return userHistoryRepository.getUserHistoryCountOrderByUser(users);
     }
 
     @Override
@@ -139,4 +139,6 @@ public class UserServiceImpl implements UserService {
         }
         return remoteAddr;
     }
+
+
 }

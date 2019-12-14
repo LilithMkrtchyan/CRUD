@@ -23,4 +23,6 @@ public interface UserService {
     String deleteAccount(User user);
 
     public String activateAccount(User user);
+
+    public List<Integer> getUserHistoryCountOrderByUser(List<User> user);
 }

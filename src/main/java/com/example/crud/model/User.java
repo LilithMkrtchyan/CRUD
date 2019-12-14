@@ -49,7 +49,6 @@ public class User {
     @Column
     private String verificationToken;
 
-
     @PrePersist
     public void prePersist(){
         if(role == null){
